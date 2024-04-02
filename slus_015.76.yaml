@@ -1,0 +1,149 @@
+name: SLUS_015.76
+sha1: 7f07a637dc006448df1723bb9bfc383b56f4d59c
+options:
+  basename: slus_015.76
+  target_path: SLUS_015.76
+  base_path: .
+  platform: psx
+  compiler: GCC
+
+  # asm_path: asm
+  # src_path: src
+  # build_path: build
+  # create_asm_dependencies: True
+
+  ld_script_path: slus_015.76.ld
+
+  find_file_boundaries: False
+  gp_value: 0x80094264
+
+  o_as_suffix: True
+  use_legacy_include_asm: False
+
+  asm_function_macro: glabel
+  asm_jtbl_label_macro: jlabel
+  asm_data_macro: dlabel
+
+  section_order: [".rodata", ".text", ".data", ".sdata", ".sbss", ".bss"]
+  # auto_all_sections: [".data", ".rodata", ".bss"]
+
+  symbol_addrs_path:
+    - symbol_addrs.txt
+  reloc_addrs_path:
+    - reloc_addrs.txt
+
+  # undefined_funcs_auto_path: undefined_funcs_auto.txt
+  # undefined_syms_auto_path: undefined_syms_auto.txt
+
+  extensions_path: tools/splat_ext
+
+  subalign: 2
+
+  string_encoding: ASCII
+  data_string_encoding: ASCII
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+  # ld_bss_is_noload: True
+segments:
+  - name: header
+    type: header
+    start: 0x0
+
+  - name: main
+    type: code
+    start: 0x800
+    vram: 0x80010000
+    bss_size: 0x30498
+    subsegments:
+      - [0x000800, rdata, rdata]
+      - [0x0066CC, c, dora/GAME/ETACTOR]
+      - [0x00BD70, c, dora/PROJECT/MAIN]
+      - [0x00C4A8, c, dora/GAME/CAST]
+      - [0x00C4DC, c, dora/GAME/PICKUP]
+      # gstring.obj is data-only
+      - [0x00D4F0, c, dora/GAME/HUD]
+      - [0x00F054, c, dora/GAME/ET_PBAG]
+      - [0x010CB8, c, dora/GAME/ENDLEVEL]
+      - [0x010FF0, c, dora/GAME/DIGCRATE]
+      - [0x01262C, c, dora/GAME/WORLD]
+      - [0x014F34, c, dora/GAME/NEWSPAPER]
+      - [0x015EC0, c, dora/MENUS/MENU]
+      - [0x019208, c, dora/MENUS/MEMCARD]
+      - [0x019A10, c, dora/GAME/PARTICLE]
+      - [0x021514, c, dora/GAME/GAMELOOP]
+      - [0x023FC4, c, dora/GAME/G_CINE]
+      - [0x024054, c, dora/AUD/PXM_INITW]
+      # ai_types.obj is data-only
+      - [0x024CC0, c, dora/AI/BOOTS]
+      - [0x026370, c, dora/AI/SWIPER]
+      - [0x0273B8, c, WB_ENG/GAME/ACT_POOL]
+      - [0x027EFC, c, WB_ENG/GAME/ANIMATE]
+      - [0x0298B4, c, WB_ENG/GAME/CAMERA]
+      - [0x02B458, c, WB_ENG/GAME/CAMERA2]
+      - [0x02C440, c, WB_ENG/GAME/PHYSICS]
+      - [0x02F62C, c, WB_ENG/GAME/COLLIDE]
+      - [0x02FBE4, c, WB_ENG/GAME/TRIGGERS]
+      - [0x031454, c, WB_ENG/GAME/CINE]
+      - [0x032CD8, c, WB_ENG/GAME/SPAWN]
+      - [0x034024, c, WB_ENG/GAME/TK]
+      - [0x034BDC, c, WB_ENG/GAME/BBACTORS]
+      - [0x034D80, c, WB_ENG/GAME/BEAM]
+      - [0x034DA8, c, WB_ENG/AI/AUD_ATTK]
+      - [0x0352BC, c, WB_ENG/AI/PATH]
+      - [0x0359E0, c, WB_ENG/AI/BBOXMOVE]
+      - [0x035E0C, c, WB_ENG/AI/PJECTILE]
+      - [0x036E48, c, WB_ENG/AI/TRACKER]
+      - [0x037724, c, WB_ENG/AI/WWHEEL]
+      - [0x0377E4, c, WB_ENG/AI/HEDGEHOG]
+      - [0x037B5C, c, WB_ENG/AI/VEHICLE]
+      - [0x03896C, c, WB_ENG/AI/RELEASE]
+      - [0x039260, c, WB_ENG/AI/GENACTOR]
+      - [0x03AECC, c, WB_ENG/GFX/BILLBRD]
+      - [0x03B29C, c, WB_ENG/GFX/BUFFERS]
+      - [0x03B308, hasm, WB_ENG/GFX/NTAGASM]
+      - [0x03B368, c, WB_ENG/GFX/BNTAG]
+      - [0x03B53C, c, WB_ENG/GFX/MODEL]
+      - [0x03CBF0, c, WB_ENG/GFX/ISO_DATA]
+      - [0x03DFB4, c, WB_ENG/GFX/ISO_EDIT]
+      - [0x03F1E8, c, WB_ENG/GFX/ISO_MEM]
+      - [0x03F2D0, c, WB_ENG/GFX/MOVIE]
+      - [0x04036C, c, WB_ENG/UTL/TASKER]
+      # wb_eng/utl/states.obj is data-only
+      - [0x0404AC, c, WB_ENG/UTL/MEM]
+      - [0x040A28, c, WB_ENG/UTL/SINCOS]
+      - [0x040B44, c, WB_ENG/UTL/RANDOM_NUM]
+      - [0x040BC0, c, WB_ENG/UTL/CHUNKFILE_C]
+      - [0x04129C, c, WB_ENG/UTL/PBAG_C]
+      - [0x0414E4, c, WB_ENG/DEBUG/PTOOLBOX]
+      - [0x042F68, c, WB_ENG/AUD/PXM_BASE]
+      - [0x0431BC, c, dora/AUD/PXM_EV]
+      - [0x043FF4, c, WB_ENG/AUD/PXM_EVAI]
+      - [0x044438, c, WB_ENG/AUD/PXM_INIT]
+      - [0x044B2C, c, WB_ENG/AUD/PXM_MATH]
+      - [0x045168, c, WB_ENG/AUD/PXM_SND]
+      - [0x045938, c, WB_ENG/AUD/PXM_VOICEMAN]
+      - [0x045EF0, c, WB_ENG/AUD/LIBSNDSTUB]
+      - [0x045FCC, c, WB_ENG/PSXAPI/FILE]
+      - [0x04814C, c, WB_ENG/PSXAPI/PTEXTURE]
+      - [0x048700, c, WB_ENG/PSXAPI/LLALERT]
+      - [0x0487C0, c, WB_ENG/PSXAPI/TXTBASES]
+      - [0x049920, c, WB_ENG/PSXAPI/PINPUT]
+      - [0x04A574, c, WB_ENG/PSXAPI/PVIDEO]
+      - [0x04C428, c, WB_ENG/PSXAPI/PTIMER]
+      - [0x04C4D8, c, WB_ENG/PSXAPI/VRAM]
+      - [0x04D678, c, WB_ENG/PSXAPI/CLUT]
+      - [0x04EDDC, c, WB_ENG/PSXAPI/XA]
+      - [0x04F8C0, c, WB_ENG/GFX/DRAWPOLY]
+      - [0x0504B0, c, WB_ENG/GFX/ISO_CEL]
+      - [0x051FA0, c, WB_ENG/GFX/ACTOR]
+      - [0x052924, c, WB_ENG/GFX/SHADOWS]
+      - [0x052F24, c, WB_ENG/DEBUG/LINE]
+      - [0x052F4C, c, WB_ENG/PSXAPI/ISO_DRAW]
+      - [0x0570A4, c, WB_ENG/PSXAPI/SKELETON]
+      - [0x058A58, hasm, WB_ENG/PSXAPI/DBG_HELP_IRQ]
+      - [0x058C64, asm, libs]
+      - [0x075C0C, data, data]
+      - [0x084A64, sdata, sdata]
+      - { start: 0x085D20, type: sbss, vram: 0x80095520, name: sbss }
+      - { start: 0x085D20, type: bss, vram: 0x80095A60, name: bss }
+  - [0x086000]
